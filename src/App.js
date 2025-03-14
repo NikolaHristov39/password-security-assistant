@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import PasswordStrengthChecker from "./PasswordStrenghtChecker";
+import PasswordGenerator from "./PasswordGenerator";
+import "./App.css";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("checker");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>🔐 Password Tool 🔐</h1>
+      <div className="container">
+        <div className="tabs">
+          <button
+            onClick={() => setActiveTab("checker")}
+            className={activeTab === "checker" ? "active" : ""}
+          >
+            Password Checker
+          </button>
+          <button
+            onClick={() => setActiveTab("generator")}
+            className={activeTab === "generator" ? "active" : ""}
+          >
+            Password Generator
+          </button>
+        </div>
+        {activeTab === "checker" && <PasswordStrengthChecker />}
+        {activeTab === "generator" && <PasswordGenerator />}
+      </div>
+      <h3>Security Tips</h3>
+      <div className="security-tips-container">
+        <div className="security-tips-grid">
+          <div className="tip">Use a password manager</div>
+          <div className="tip">Enable two-factor authentication</div>
+          <div className="tip">Use different passwords</div>
+          <div className="tip">Update regularly</div>
+        </div>
+      </div>
+      <p>Your passwords are never stored or transmitted.</p>
     </div>
   );
 }
