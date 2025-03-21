@@ -15,7 +15,7 @@ function App() {
             onClick={() => setActiveTab("checker")}
             className={activeTab === "checker" ? "active" : ""}
           >
-            Password Checker!!!
+            !!!Password Checker!!!
           </button>
           <button
             onClick={() => setActiveTab("generator")}
